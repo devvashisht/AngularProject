@@ -58,6 +58,7 @@ viewChildVariable;
 # Services
 
 -
+
 - <a routerLink = "/servers">
 - <a [routerLink ]= ["'/servers'"]> absolute path ./ relative path
   -Template routerLinkActive ="active" : apply class on activate
@@ -150,3 +151,17 @@ ng generate angularmaterial:nav
 - `Differential Loading`
 - ng g application (app under projects)
 - ng g library
+
+>
+
+# PERFORMANCE
+
+1. Load Time
+2. Reload Time
+3. Run Time
+
+**Load Time**
+**Re-Load Time**
+**Run Time**
+
+>
