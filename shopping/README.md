@@ -212,4 +212,17 @@ platformBrowserDynamic().bootstrapModule(AppModule)
   - reattach()
 - `NGzone` service inject - runoutsidezone - run
 
->
+* Unnecessary use of third-party packages for small use cases (
+* **Gzip Compression**
+
+```javascript
+var compression = require("compression");
+var express = require("express");
+var app = express();
+app.use(compression());
+```
+
+- use of `Web Worker`
+- Avoid complex computations in the template
+
+> (Angular Performance) [https://medium.com/faun/44-quick-tips-to-fine-tune-angular-performance-9f5768f5d945]
