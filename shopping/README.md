@@ -156,17 +156,60 @@ ng generate angularmaterial:nav
 
 # PERFORMANCE
 
+` Speed, memory pressure, cpu usage(battery consumtion)
+
 1. Load Time
 2. Reload Time
 3. Run Time
 
 **Load Time**
-**Re-Load Time**
 
-> **Run Time**
-> **virtual scrolling/Infinte Scrolling**
+- `Asset size`
+- `Tree Shaking` Bundle size(webpack): remove : non-import library/file - non used method for imported file will be added - `service` provided in NgModule will be added irrespective of their use, however, if we use `provideIn` then if service not refered in app then it will not be part of final bundle - `image/asset optimization` : [asset optimizatio](https://web.dev/fast/#optimize-your-images)
+- `compress asset`
+- `Lazy Loading\pre-loading`
+- `AOT` : compile typescript & template at build time
+- `JIT`: Angular compiler added to bundle
+- `ServerSide Rendering`: html page generate and serve from server instead of single index.html. 2. @angular universal pacakge help 3. crawlable by search
+  **Re-Load Time**
+  - `CACHING` : configure server to add header
+    1. `Cache busting` to get always updated asset
+  - `Service Worker` to cache and serve
+
+> **Run Time** > **virtual scrolling/Infinte Scrolling**
 
 - only show content as per viewport and add/remove as per scrolling [virtual scroll explain](https://medium.com/frontend-journeys/how-virtual-infinite-scrolling-works-239f7ee5aa58)
-  >
+  > **PROFILLING** **CHANGE DETECTION** -
+
+```javascript
+main.ts
+platformBrowserDynamic().bootstrapModule(AppModule)
+  .then(moduleRef => {
+    const applicationRef = moduleRef.injector.get(ApplicationRef);
+    const componentRef = applicationRef.components[0];
+    // allows to run `ng.profiler.timeChangeDetection();`
+    enableDebugTools(componentRef);
+  })
+  .catch(err => console.log(err));
+   - Then go to the page you want to profile, open your browser console, and execute the following instruction:
+```
+
+> ng.profiler.timeChangeDetection()
+> ran 489 change detection cycles
+> 1.02 ms per check
+
+- You can also record the CPU profile during these checks to analyze them with ng.profiler.timeChangeDetection({ record: true }).
+
+```
+ - `trackBy in ngFor`  : if referennce changes of any item then node list is recreated , however , if we use `trackBy` then node will be recreted only when trackby attribute change, this save lots of dom node recreation
+```
+
+- `Change dectection strategies` : On push
+- `ChangeDetectorRef` service inject:
+  - detach()
+  - detectChanges()
+  - markForCheck()
+  - reattach()
+- `NGzone` service inject - runoutsidezone - run
 
 >
