@@ -162,6 +162,11 @@ ng generate angularmaterial:nav
 
 **Load Time**
 **Re-Load Time**
-**Run Time**
+
+> **Run Time**
+> **virtual scrolling/Infinte Scrolling**
+
+- only show content as per viewport and add/remove as per scrolling [virtual scroll explain](https://medium.com/frontend-journeys/how-virtual-infinite-scrolling-works-239f7ee5aa58)
+  >
 
 >
